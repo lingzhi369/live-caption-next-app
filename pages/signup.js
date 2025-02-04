@@ -19,14 +19,14 @@ export default function SignUp() {
     setMessage(data.message);
 
     if (response.ok) {
-      router.push('/login'); // Redirect to login after signup
+      router.push('/login');
     }
   };
 
   return (
-    <div>
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="container">
+      <h1>Sign Up</h1>
+      <form onSubmit={handleSubmit} className="form">
         <input
           type="email"
           placeholder="Email"
@@ -34,7 +34,6 @@ export default function SignUp() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <br />
         <input
           type="password"
           placeholder="Password"
@@ -42,10 +41,48 @@ export default function SignUp() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <br />
         <button type="submit">Register</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className="message">{message}</p>}
+      <style jsx>{`
+        .container {
+          max-width: 400px;
+          margin: 50px auto;
+          background: white;
+          padding: 20px;
+          border-radius: var(--border-radius);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+          color: var(--sunflower-orange);
+          text-align: center;
+        }
+        .form {
+          display: flex;
+          flex-direction: column;
+        }
+        input {
+          padding: 12px;
+          margin: 10px 0;
+          border: 1px solid #ccc;
+          border-radius: var(--border-radius);
+        }
+        button {
+          background-color: var(--sunflower-orange);
+          color: white;
+          padding: 12px;
+          border: none;
+          border-radius: var(--border-radius);
+          cursor: pointer;
+        }
+        button:hover {
+          background-color: #e69500;
+        }
+        .message {
+          text-align: center;
+          color: green;
+        }
+      `}</style>
     </div>
   );
 }

@@ -19,15 +19,15 @@ export default function Login() {
     setMessage(data.message);
 
     if (response.ok) {
-        localStorage.setItem('userEmail', email); // Save user login status
-        router.push('/dashboard'); // Redirect to Dashboard
+      localStorage.setItem('userEmail', email);
+      router.push('/dashboard');
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="container">
+      <h1>Log In</h1>
+      <form onSubmit={handleSubmit} className="form">
         <input
           type="email"
           placeholder="Email"
@@ -35,7 +35,6 @@ export default function Login() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <br />
         <input
           type="password"
           placeholder="Password"
@@ -43,10 +42,48 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <br />
         <button type="submit">Login</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className="message">{message}</p>}
+      <style jsx>{`
+        .container {
+          max-width: 400px;
+          margin: 50px auto;
+          background: white;
+          padding: 20px;
+          border-radius: var(--border-radius);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+          color: var(--sunflower-orange);
+          text-align: center;
+        }
+        .form {
+          display: flex;
+          flex-direction: column;
+        }
+        input {
+          padding: 12px;
+          margin: 10px 0;
+          border: 1px solid #ccc;
+          border-radius: var(--border-radius);
+        }
+        button {
+          background-color: var(--sunflower-orange);
+          color: white;
+          padding: 12px;
+          border: none;
+          border-radius: var(--border-radius);
+          cursor: pointer;
+        }
+        button:hover {
+          background-color: #e69500;
+        }
+        .message {
+          text-align: center;
+          color: red;
+        }
+      `}</style>
     </div>
   );
 }

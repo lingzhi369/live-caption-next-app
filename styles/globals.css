@@ -1,0 +1,43 @@
+:root {
+    --sunflower-orange: #FFA500; /* Sunflower AI's Orange */
+    --text-color: #333;
+    --background-color: #f9f9f9;
+    --border-radius: 8px;
+    --font-family: 'Arial', sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: var(--sunflower-orange);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  

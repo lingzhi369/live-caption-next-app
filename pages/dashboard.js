@@ -20,7 +20,7 @@ export default function Dashboard() {
     const data = JSON.parse(localStorage.getItem('transcripts')) || [];
     const userTranscripts = data
       .filter((t) => t.email === email)
-      .sort((a, b) => new Date(b.date) - new Date(a.date)); // ✅ Sort by date (most recent first)
+      .sort((a, b) => new Date(b.date) - new Date(a.date)); // Most recent first
     setTranscripts(userTranscripts);
   };
 
@@ -37,21 +37,58 @@ export default function Dashboard() {
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '20px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 20px' }}>
-        <h2>Welcome, {user}!</h2>
-        <div style={{ fontSize: '30px', cursor: 'pointer' }}>👤</div>
-      </div>
+    <div style={{ textAlign: 'center', marginTop: '40px' }}>
+      <h2>Welcome, {user}!</h2>
+
+      {/* ✅ Start New Session Button at the Top Center */}
+      <button
+        onClick={startNewSession}
+        style={{
+          backgroundColor: 'var(--sunflower-orange)',
+          color: 'white',
+          padding: '12px 20px',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          fontWeight: 'bold',
+          marginTop: '20px',
+          marginBottom: '20px',
+        }}
+      >
+        ➕ Start New Session
+      </button>
 
       <h3>📜 History Transcripts</h3>
       {transcripts.length > 0 ? (
         <ul style={{ listStyleType: 'none', padding: 0 }}>
           {transcripts.map((transcript, index) => (
-            <li key={index} style={{ margin: '10px 0', backgroundColor: '#f2f2f2', padding: '10px', borderRadius: '5px' }}>
+            <li
+              key={index}
+              style={{
+                margin: '20px auto',
+                backgroundColor: '#f2f2f2',
+                padding: '15px',
+                borderRadius: '8px',
+                maxWidth: '800px',
+                textAlign: 'left',
+                boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+              }}
+            >
               <div>{transcript.content}</div>
               <small>{new Date(transcript.date).toLocaleString()}</small>
               <br />
-              <button onClick={() => downloadTranscript(transcript.content, index)} style={{ marginTop: '5px' }}>
+              <button
+                onClick={() => downloadTranscript(transcript.content, index)}
+                style={{
+                  marginTop: '8px',
+                  padding: '8px 16px',
+                  backgroundColor: '#0070f3',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                }}
+              >
                 ⬇️ Download
               </button>
             </li>
@@ -60,13 +97,6 @@ export default function Dashboard() {
       ) : (
         <p>No transcripts found.</p>
       )}
-
-      <button
-        onClick={startNewSession}
-        style={{ marginTop: '20px', padding: '10px 20px', fontSize: '16px' }}
-      >
-        ➕ Start New Session
-      </button>
     </div>
   );
 }
