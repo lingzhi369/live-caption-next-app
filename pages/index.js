@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Welcome to Lingzhi's Live Caption App!</h1>
+      <h1>Welcome to Lingzhi Live Caption App!</h1>
       <p>Please sign up or log in to continue.</p>
 
       <div style={{ marginTop: '20px' }}>

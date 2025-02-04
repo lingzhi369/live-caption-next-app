@@ -14,7 +14,7 @@ export default function Dashboard() {
       setUser(loggedInUser);
       fetchTranscripts(loggedInUser);
     }
-  }, []);
+  }, [router]);
 
   const fetchTranscripts = (email) => {
     const data = JSON.parse(localStorage.getItem('transcripts')) || [];

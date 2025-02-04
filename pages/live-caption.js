@@ -83,7 +83,7 @@ export default function LiveCaption() {
 
   return (
     <div style={{ textAlign: 'center', padding: '20px' }}>
-      <h1>🎤 Lingzhi's Live Captioning App</h1>
+      <h1>🎤 Lingzhi Live Captioning App</h1>
 
       <div
         ref={transcriptRef}
