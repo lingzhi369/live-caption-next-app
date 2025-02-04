@@ -9,19 +9,28 @@ export default function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const data = await response.json();
-    setMessage(data.message);
-
-    if (response.ok) {
-      router.push('/login');
+    try {
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      const data = await response.json();
+      setMessage(data.message);
+  
+      if (response.ok) {
+        alert('Registration successful! Redirecting to login.');
+        router.push('/login');
+      } else {
+        alert(`Error: ${data.message}`); // ✅ Show error message
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Something went wrong. Please try again later.'); // ✅ Catch network errors
     }
   };
+  
 
   return (
     <div className="container">
